@@ -5,16 +5,22 @@
 #-------------------------------------------------
 
 QT       -= gui
-
+QT      += sql
 TARGET = src
 TEMPLATE = lib
 
 DEFINES += SRC_LIBRARY
 
-SOURCES += item.cpp
+SOURCES += item.cpp \
+    Database/databasemanager.cpp \
+    itemprivate.cpp \
+    Database/itemmodel.cpp
 
 HEADERS += item.h\
-        src_global.h
+        src_global.h \
+    Database/databasemanager.h \
+    itemprivate.h \
+    Database/itemmodel.h
 
 unix {
     target.path = /usr/lib
