@@ -1,0 +1,4 @@
+#ifndef ERROREVENTS_H
+#define ERROREVENTS_H
+
+#endif // ERROREVENTS_H
