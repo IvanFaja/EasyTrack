@@ -13,6 +13,7 @@
 #include <QtCore/QCoreApplication>
 #include <QtCore/QDir>
 #include <QtQml/QQmlEngine>
+#include <QDebug>
 
 class QtQuick2ApplicationViewerPrivate
 {
@@ -46,6 +47,7 @@ QString QtQuick2ApplicationViewerPrivate::adjustPath(const QString &path)
 #elif defined(Q_OS_ANDROID_NO_SDK)
     return QLatin1String("/data/user/qt/") + path;
 #endif
+    qDebug()<<"zzzzzzzzzzz"<<path;
     return path;
 }
 

@@ -3,6 +3,7 @@
 
 #include <QSqlQueryModel>
 #include <QStringList>
+#include <QSqlQuery>
 
 class ItemModel : public QSqlQueryModel
 {
@@ -12,21 +13,30 @@ public:
         RefRole = Qt::UserRole + 1,
         SizeRole,
         AmountRole,
-        PriceRole
+        PriceRole,
+        ColorRole,
+        ProvRole,
+        LastRole =ProvRole
     };
+
     explicit ItemModel(QObject *parent = 0);
     void addFilter(const QString &filter, const QString &value);
     void resetFiler();
     QString getBaseQuery() const;
     void setBaseQuery(const QString &value);
-    void prepare(QSqlDatabase db);
-    QHash<int, QByteArray> roleNames() const;
-    QVariant data(const QModelIndex &index, int role) const;
+    void prepare(const QSqlDatabase &db);
+    Q_INVOKABLE virtual bool setProperty(int rowIndex,const QString &property, const QVariant &value);
+    virtual QHash<int, QByteArray> roleNames() const;
+    virtual QVariant data(const QModelIndex &index, int role) const;
+
+    Q_INVOKABLE virtual QVariantMap getProperty(int row);
 signals:
 
 public slots:
-private:
+protected:
     QString baseQuery;
+    QSqlQuery m_updateQuery;
+private:
     QString filter;
     bool hasFilter;
     QStringList values;

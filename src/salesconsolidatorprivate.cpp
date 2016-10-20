@@ -1,6 +1,17 @@
 #include "salesconsolidatorprivate.h"
+#include "Database/databasemanager.h"
 
-SalesConsolidatorPrivate::SalesConsolidatorPrivate(QObject *parent) :
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QList>
+SalesConsolidatorPrivate::SalesConsolidatorPrivate(DatabaseManager* databaseManager,QObject *parent) :
     QObject(parent)
 {
+    this->databaseManager = databaseManager;
+}
+
+void SalesConsolidatorPrivate::updateSalesDates()
+{
+    QSqlDatabase db = databaseManager->open();
+    salesDates.prepare(db);
 }

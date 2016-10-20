@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/GUI/AddSalesItem.qml</file>
+        <file>qml/GUI/BackupForm.qml</file>
+        <file>qml/GUI/InputBox.qml</file>
+        <file>qml/GUI/main.qml</file>
+        <file>qml/GUI/MessageBox.qml</file>
+        <file>qml/GUI/PickerBox.qml</file>
+        <file>qml/GUI/SalesReportForm.qml</file>
+        <file>qml/GUI/SimpleButton.qml</file>
+        <file>qml/GUI/SimpleDialog.qml</file>
+        <file>qml/GUI/SimpleMenu.qml</file>
+        <file>qml/GUI/SimpleMenuItem.qml</file>
+        <file>qml/GUI/AddItemFrom.qml</file>
+    </qresource>
+</RCC>

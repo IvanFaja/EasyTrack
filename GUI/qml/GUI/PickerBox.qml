@@ -6,61 +6,35 @@ import QtQuick.Controls 1.1
 
 
 Rectangle{
-    id:backGround
-    width: parent.width
-    height: boxLabel.height + box.height + 5
-    border.width: 0
-
-    gradient: Gradient {
-        GradientStop {
-            position: 0
-            color: "#faf0f0"
-        }
-
-        GradientStop {
-            position: 1
-            color: "#96d4c5"
-        }
-    }
-    property alias label: boxLabel.text
-    property alias value: boxInput.value
-    property alias active: boxInput.focus
-    property alias minValue: boxInput.value
-    property alias decimals: boxInput.decimals
-    property alias prefix: boxInput.prefix
-    property alias suffix: boxInput.suffix
-    property alias stepSize: boxInput.stepSize
-    signal inputtextChanged()
-    function setInput( inputText){
-        boxInput.text = inputText
-    }
-    onActiveFocusChanged: {
-        if(focus){
-           boxInput.forceActiveFocus();
-        }
-    }
-    Column{
-        id: container
+    width: 300
+    height: 50
+    RowLayout{
         anchors.fill: parent
+    ScrollView{
 
-        Text {
-            id: boxLabel
-            text: label
-            width: parent.width
-        }
-        Rectangle{
-            id: box
-            width: parent.width
-            height: boxInput.height + 5
-            radius: 4
+        ListView{
+            model:ListModel{
 
-            SpinBox{
-                id: boxInput
-                anchors.centerIn: parent
-                width: parent.width-5
-                minimumValue: 1
+                ListElement {
+                    name: "Bill Smith"
+                    number: "555 3264"
+                }
+                ListElement {
+                    name: "John Brown"
+                    number: "555 8426"
+                }
+                ListElement {
+                    name: "Sam Wise"
+                    number: "555 0473"
+                }
+            }
+            delegate:
+                Text {
+                    text: name
+
             }
         }
+    }
     }
 }
 

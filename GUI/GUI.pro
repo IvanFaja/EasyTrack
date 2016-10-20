@@ -1,20 +1,8 @@
-# Add more folders to ship with the application, here
-folder_01.source = qml/GUI
-folder_01.target = qml
-DEPLOYMENTFOLDERS = folder_01
-QT += sql
-# Additional import path used to resolve QML modules in Creator's code model
-QML_IMPORT_PATH =
 
-# The .cpp file which was generated for your project. Feel free to hack it.
+QT += sql qml quick widgets
+TARGET = Stocks
 SOURCES += main.cpp
 
-# Installation path
-# target.path =
-
-# Please do not modify the following two lines. Required for deployment.
-include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
-qtcAddDeployment()
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../src/release/ -lsrc
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../src/debug/ -lsrc
@@ -26,9 +14,22 @@ DEPENDPATH += $$PWD/../src
 OTHER_FILES += \
     qml/GUI/InputBox.qml \
     android/AndroidManifest.xml \
-    qml/GUI/PickerBox.qml
+    qml/GUI/PickerBox.qml \
+    qml/GUI/SimpleMenu.qml \
+    qml/GUI/SimpleMenuItem.qml \
+    qml/GUI/AddItemFrom.qml \
+    qml/GUI/AddSalesItem.qml \
+    qml/GUI/BackupForm.qml \
+    qml/GUI/main.qml \
+    qml/GUI/MessageBox.qml \
+    qml/GUI/SalesReportForm.qml \
+    qml/GUI/SimpleButton.qml \
+    qml/GUI/SimpleDialog.qml
 
 ANDROID_EXTRA_LIBS += $$OUT_PWD/../src/libsrc.so
 
 ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
+RESOURCES += \
+    resources.qrc
 

@@ -4,26 +4,16 @@ import QtQuick.Controls 1.1
 
 Rectangle{
     id:backGround
-    width: parent.width
+    width: 100
     height: boxLabel.height + box.height + 5
     border.width: 0
-    gradient: Gradient {
-        GradientStop {
-            position: 0
-            color: "#faf0f0"
-        }
-
-        GradientStop {
-            position: 1
-            color: "#96d4c5"
-        }
-    }
     property alias label: boxLabel.text
     property alias value: boxInput.text
     property alias validator: boxInput.validator
     property alias mask: boxInput.inputMask
     property alias active: boxInput.focus
-
+    property alias inputMethodHints: boxInput.inputMethodHints
+    color: "#E7E6FA"
     signal acepted();
     function setInput( inputText){
         boxInput.text = inputText
@@ -31,16 +21,17 @@ Rectangle{
     onActiveFocusChanged: {
         if(focus){
             boxInput.forceActiveFocus();
+            boxInput.cursorPosition=0
+            boxInput.selectAll();
         }
     }
     Column{
         id: container
         anchors.fill: parent
 
-        Label {
+        Text {
             id: boxLabel
             text: label
-            width: parent.width
         }
         Rectangle{
             id: box
@@ -54,8 +45,15 @@ Rectangle{
                 id: boxInput
                 anchors.centerIn: parent
                 width: parent.width-5
-                color: "#000000"
+
                 onAccepted: acepted()
+                onFocusChanged: {
+                    if(activeFocus){
+                        boxInput.cursorPosition=0
+                        boxInput.selectAll();
+                    }
+                }
+
             }
         }
     }
