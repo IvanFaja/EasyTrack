@@ -2,7 +2,7 @@
 QT += sql qml quick widgets
 TARGET = Stocks
 SOURCES += main.cpp
-
+RC_FILE  += Stocks.rc
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../src/release/ -lsrc
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../src/debug/ -lsrc
